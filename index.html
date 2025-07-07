@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blog - Generics Generator</title>
+    <link href="main.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="https://rfmineguy.github.io/portfolio-site/assets/images/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="https://rfmineguy.github.io/portfolio-site/assets/images/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="https://rfmineguy.github.io/portfolio-site/assets/images/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://rfmineguy.github.io/portfolio-site/assets/images/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="MyWebSite" />
+    <script type="text/javascript" src="template.js"></script>
+  </head>
+</html>
+
+<header data-bs-theme="dark">
+</header>
+
+<main>
+  <tpl-use template="header">
+    <tpl-set-value slot-id="#title">Generics Generator</tpl-set-value>
+    <tpl-set-value slot-id="#nested #by">By Riley Fischer</tpl-set-value>
+  </tpl-use>
+
+  <tpl-use template="header">
+    <tpl-set-value slot-id="#title">Generics NonGenerator</tpl-set-value>
+    <tpl-set-value slot-id="#nested #by">By Riley Fischer</tpl-set-value>
+  </tpl-use>
+
+  <tpl-use template="blog-entry">
+    <tpl-set-value slot-id="#title">Welcome to Generics Generator blog!</tpl-set-value>
+    <tpl-set-value slot-id="#content">
+      This is some multiline content for this blog entry!<br>
+      Second line here!
+    </tpl-set-value>
+  </tpl-use>
+</main>
+
+<script type="module">
+  // templategen.run('templatelib.html', '*');
+  
+  // await loadTemplateLib('templatelib.html', '*');
+  // document.querySelectorAll("tpl-use").forEach(use => {
+  //   const rendered = generate(use.getAttribute("template"), use);
+  //   use.replaceWith(rendered);
+  // });
+
+  var template_engine = new TemplateEngine();
+  await template_engine.load('templatelib.html', '*');
+  template_engine.populatePage();
+</script>
