@@ -29,6 +29,7 @@
   </tpl-use>
 
   <tpl-use template="blog-entry">
+    <tpl-set-attr  slot-id="#img" attr="src" val="assets/images/rfos.jpg"></tpl-set-attr>
     <tpl-set-value slot-id="#title">Welcome to Generics Generator blog!</tpl-set-value>
     <tpl-set-value slot-id="#content">
       This is some multiline content for this blog entry!<br>
@@ -38,14 +39,6 @@
 </main>
 
 <script type="module">
-  // templategen.run('templatelib.html', '*');
-  
-  // await loadTemplateLib('templatelib.html', '*');
-  // document.querySelectorAll("tpl-use").forEach(use => {
-  //   const rendered = generate(use.getAttribute("template"), use);
-  //   use.replaceWith(rendered);
-  // });
-
   var template_engine = new TemplateEngine();
   await template_engine.load('templatelib.html', '*');
   template_engine.populatePage();

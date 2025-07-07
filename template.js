@@ -52,11 +52,31 @@ class TemplateEngine {
       const generated = this.generate(template);
       document.querySelector('main').appendChild(generated);
 
-      const set = use.getElementsByTagName('tpl-set-value');
-      for (let set_ of set) {
-        const slotid = set_.getAttribute('slot-id');
-        var element = generated.querySelector(slotid);
-        element.innerHTML = set_.innerHTML;
+      {
+        // Handle 'tpl-set-value'
+        const set = use.getElementsByTagName('tpl-set-value');
+        for (let set_ of set) {
+          const slotid = set_.getAttribute('slot-id');
+          var element = generated.querySelector(slotid);
+          element.innerHTML = set_.innerHTML;
+        }
+      }
+
+      {
+        // Handle 'tpl-set-attr'
+        const set = use.getElementsByTagName('tpl-set-attr');
+        for (let set_ of set) {
+          const slotid = set_.getAttribute('slot-id');
+          const attr = set_.getAttribute('attr');
+          const val = set_.getAttribute('val');
+          console.log(slotid);
+          var element = generated.querySelector(slotid);
+          if (!element) {
+            console.err(`Element with id=${slotid} does not exist`);
+            continue;
+          }
+          element.setAttribute(attr, val);
+        }
       }
     }
     
